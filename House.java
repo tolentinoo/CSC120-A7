@@ -22,6 +22,11 @@ public class House extends Building {
     System.out.println("You have built a house: 🏠");
   }
 
+  // public House (boolean hasDiningRoom, boolean hasElevator){
+  //   this.hasElevator = hasElevator;
+  //   this.hasDiningRoom= hasDiningRoom;
+  // }
+
   /**
    * Accessor for hasDiningRoom
    * @return boolean Whether the house has a dining room
@@ -47,6 +52,11 @@ public class House extends Building {
     this.residents.add(name);
    }
   
+   // overload method
+  public void moveIn(int smithIdNum, String name ){
+    this.residents.add(smithIdNum,name);
+  }
+
   /**
    * Removes the resident moving out from the arraylist of residents living in this house
    * @param name The name of the resident moving out 
@@ -57,7 +67,18 @@ public class House extends Building {
     this.residents.remove(name);
     return (name);
   }
-
+  /**
+   * overload method
+   * @param smithIdNum
+   * @param name
+   * @return
+   */
+  public int moveOut(int smithIdNum, String name){
+    this.residents.remove(smithIdNum);
+    this.residents.remove(name);
+    return (smithIdNum);
+    
+  }
   /**
    * Tells us if the person is a resident of the house 
    * @param person The name of the person you're trying to search for in the house 
