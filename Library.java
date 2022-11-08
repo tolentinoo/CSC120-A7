@@ -24,6 +24,18 @@ public class Library extends Building {
     }
 
     /**
+     * Overload constructor gives the library default values when only the name if given
+     * @param name of the library 
+     */
+    public Library(String name){
+      hasElevator = false;
+      nFloors = 1;
+      address = "Unknown";
+      this.name = name;
+      this.collection = new Hashtable<String, Boolean> ();
+    }
+
+    /**
      * Adds a book to the library, the key is the title of the book while the value tells you if it's available.
      * Default value of true in this method because the book is being added to the library 
      * @param title the title of the book being added to the hashtable 
@@ -61,6 +73,8 @@ public class Library extends Building {
     public void returnBook(String title){
       this.collection.replace(title,false,true );
     }
+
+    
     /**
      * Checks whether a particular book exists in the library collection
      * @param title title of the book they're searching for 
@@ -81,6 +95,20 @@ public class Library extends Building {
     }// returns true if the title is currently available, false otherwise
 
     /**
+     * Overload Method by passing in hte name of the libary and title. Checks if student is in the right library 
+     * and if the library has the book they're looking for
+     * @param title of the library they are trying to find
+     * @param name of the book they are trying to find
+     * @return Boolean stating whether the book is available in the library
+     */
+    public boolean isAvailable(String title, String name ){
+      if (this.name == name){
+        return this.collection.get(title);
+      }
+      else return false;
+  }
+
+    /**
      * Prints out the entire collection in an easy-to-read way with a banner 
      */
     public void printCollection(){
@@ -96,10 +124,16 @@ public class Library extends Building {
         
     } 
   }
+    /* (non-Javadoc)
+     * Display the options of the methods you can use in this subclass
+     */
     public void showOptions() {
       super.showOptions();
       System.out.println( " + addTile() \n + removeTitle() \n + checkOut() \n + returnBook()\n + containsTitle()\n + isAvailable()\n + printCollection()");
 }
+    /* (non-Javadoc)
+     * Checks if the building has an elevator and then allows the user to go to the floor they want to go to 
+     */
     public void goToFloor(int floorNum){
       if (this.hasElevator == true){
         super.goToFloor(floorNum);

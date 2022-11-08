@@ -22,10 +22,7 @@ public class House extends Building {
     System.out.println("You have built a house: 🏠");
   }
 
-  // public House (boolean hasDiningRoom, boolean hasElevator){
-  //   this.hasElevator = hasElevator;
-  //   this.hasDiningRoom= hasDiningRoom;
-  // }
+
 
   /**
    * Accessor for hasDiningRoom
@@ -53,6 +50,11 @@ public class House extends Building {
    }
   
    // overload method
+  /**
+   * Adds the resident moving in to the arraylist of current residents in this house using their name and smithIDnum
+   * @param smithIdNum 99 number (smith ID num)
+   * @param name name of the student 
+   */
   public void moveIn(int smithIdNum, String name ){
     this.residents.add(smithIdNum,name);
   }
@@ -67,11 +69,13 @@ public class House extends Building {
     this.residents.remove(name);
     return (name);
   }
+
+
   /**
-   * overload method
-   * @param smithIdNum
-   * @param name
-   * @return
+   * Overload method that allows student to move in using their name and smith ID #
+   * @param smithIdNum 99 number (ID number)
+   * @param name name of student moving out
+   * @return their smith ID number 
    */
   public int moveOut(int smithIdNum, String name){
     this.residents.remove(smithIdNum);
@@ -79,6 +83,8 @@ public class House extends Building {
     return (smithIdNum);
     
   }
+
+  
   /**
    * Tells us if the person is a resident of the house 
    * @param person The name of the person you're trying to search for in the house 
@@ -89,10 +95,16 @@ public class House extends Building {
     
   }
 
+  /* 
+   *(Display the options of the methods you can use in this subclass
+   */
   public void showOptions() {
     super.showOptions();
     System.out.print( " + isResident() \n + moveIn() \n + moveOut() \n + nResidents()\n + hasDiningRoom()");
 }
+  /* (non-Javadoc)
+   * Checks if the building has an elevator and then allows the user to go to the floor they want to go to 
+   */
   public void goToFloor(int floorNum){
       if (this.hasElevator == true){
         super.goToFloor(floorNum);

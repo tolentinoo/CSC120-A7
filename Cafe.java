@@ -25,10 +25,10 @@ public class Cafe extends Building {
 
 
     /**
-     * Sells a cup of coffee 
-     * @param size 
-     * @param nSugarPackets
-     * @param nCreams
+     * Sells a cup of coffee, if there are no ingredients available then the method restocks the ingredients too 
+     * @param size The size of the cup of coffee 
+     * @param nSugarPackets Amount of sugar packets 
+     * @param nCreams Amount of creams 
      */
     public void sellCoffee(int size, int nSugarPackets, int nCreams){
         if (this.nCoffeeOunces ==0 || this.nSugarPackets == 0 || this.nCreams ==0|| this.nCups==0){
@@ -41,7 +41,14 @@ public class Cafe extends Building {
         this.nCups -= 1;
         // if-else statement, default restock 
     }
-
+    
+    /**
+     * Restocks the ingredients needed to make a cup of coffee
+     * @param nCoffeeOunces Amount of Coffee needed for restock 
+     * @param nSugarPackets Amount of sugar packets needed for restock 
+     * @param nCreams Amount of creams needed for restock 
+     * @param nCups Amount of cups eeded for restock 
+     */
     private void restock(int nCoffeeOunces, int nSugarPackets, int nCreams, int nCups){
             this.nCoffeeOunces += nCoffeeOunces;
             this.nSugarPackets += nSugarPackets;
@@ -49,10 +56,45 @@ public class Cafe extends Building {
             this.nCups += nCups;
     } 
 
+    /** 
+     * Overload method of restock. Only restocks coffee, sugar packets and creams.
+     * @param nCoffeeOunces Amount of coffee needed for restock 
+     * @param nSugarPackets Amount of sugar packets needed for restock 
+     * @param nCreams Amount of creams needed for restock 
+     */
+    private void restock(double nCoffeeOunces, int nSugarPackets, int nCreams){
+        this.nCoffeeOunces += nCoffeeOunces;
+        this.nSugarPackets += nSugarPackets;
+        this.nCreams += nCreams;
+    }
+
+    
+    /** 
+     * Overload method of restock. Only restocks coffee and sugar packets.
+     * @param nCoffeeOunces Amount of cofeee needed for restock
+     * @param nSugarPackets Amount of sugar packets needed for restock
+     */
+    private void restock(double nCoffeeOunces, double nSugarPackets){
+        this.nCoffeeOunces += nCoffeeOunces;
+        this.nSugarPackets += nSugarPackets;
+    }
+   
+
+    /* 
+     * Display the options of the methods you can use in this subclass
+     */
     public void showOptions() {
         System.out.println("Available options at " + this.name + ":\n + restock() \n + sellCoffee() \n + enter() \n + exit()\n ");
     }
 
+    /* (non-Javadoc)
+     * Since cafe's only have one floor then a warning message appears when they try to go to any floor that is not the first floor
+     */
+    public void goToFloor(int floorNum){
+        if (floorNum != 1){
+          System.out.println("Warning: You do not have access to other floors ");
+        }
+    }
     
     // print statement to test 
     public static void main(String[] args) {
@@ -60,6 +102,8 @@ public class Cafe extends Building {
        System.out.println(shop);
        shop.sellCoffee(12,4,5);
        shop.showOptions();
+       shop.restock(12.5, 5.5);
+       shop.restock(10.0, 3, 12);
 
     }
     
