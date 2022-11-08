@@ -1,5 +1,6 @@
 Use this file to record your reflection on this assignment.
-
+- I used the non-penalty extension on A6 but forgot to put in the extension.txt file explaining that I'm using 
+    the extension you gave us. Worked with Gracia B and Laisha 
 - Which methods did you decide to `overload`, and why?
     Cafe Class:
     I overloaded the restock methods. By overloading the restock method I'm able to only retock certain products in the cafe. In the first restock method I overloaded I chose to only restock nCoffeeOunces,nSugarPackets and nCreams. In the second restock method I overloaded I chose to only restock the nCofeeOunces and nSugarPackets. 
